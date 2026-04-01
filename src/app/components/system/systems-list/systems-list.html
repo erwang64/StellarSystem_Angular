@@ -1,0 +1,5 @@
+@for (sys of allSystems; track sys.id) {
+  <p>Systeme "{{ sys.name }}" position : ({{ sys.posX }},{{ sys.posY }})</p>
+} @empty {
+  <p>la liste est vide.</p>
+}

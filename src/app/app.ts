@@ -1,12 +1,11 @@
-import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component } from '@angular/core';
+
+import { SystemsListComponent } from './components/system/systems-list/systems-list';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  imports: [SystemsListComponent],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })
-export class App {
-  protected readonly title = signal('stellarsystemAngular');
-}
+export class App {}
