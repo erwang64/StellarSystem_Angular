@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal, WritableSignal } from '@angular/core';
 import { IConnexionListener } from '../../technical/iconnexion-listener';
 import { User } from '../../model/user';
 import { ConnectionCentralizer } from '../../technical/connection-centralizer';
@@ -12,15 +12,15 @@ import { UsersService } from '../../services/users.service';
 })
 export class ConnctionTest implements IConnexionListener{
 
-  connectedUser : User | null ;
+  readonly connectedUser : WritableSignal<User | null> = signal<User | null>(null);
 
   constructor( private userservice: UsersService) {
     ConnectionCentralizer.getInstance().addListener(this);
-    this.connectedUser = ConnectionCentralizer.getInstance().user;
+    this.connectedUser.set(ConnectionCentralizer.getInstance().user);
   }
 
   connectionChanged(newProfile: User | null): void {
-    this.connectedUser = newProfile;
+    this.connectedUser.set(newProfile);
   }
 
   getName(): string {
@@ -29,7 +29,7 @@ export class ConnctionTest implements IConnexionListener{
 
 
   connectDisconnect() {
-    if(this.connectedUser == null) {
+    if(this.connectedUser() == null) {
       this.userservice.login("PatcrikLebgdefou", "Test123456");
     } else {
       this.userservice.disconnect();
