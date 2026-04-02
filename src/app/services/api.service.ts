@@ -4,6 +4,7 @@ import { catchError, Observable, retry, throwError } from 'rxjs';
 
 import { environment } from '../../environments/environment';
 import { APIError } from '../model/api-error';
+import { response } from 'express';
 
 @Injectable({
   providedIn: 'root'
@@ -67,15 +68,27 @@ export class APIService {
       .pipe(retry(1), catchError((error) => this.httpError(error)));
   }
 
-  public sendPostRequest<T>(url: string, data: T, headers: HttpHeaders | null): Observable<HttpResponse<T>> {
-    const safeHeaders = headers ?? APIService.FORM_HEADERS;
-    const httpOptions = {
-      observe: 'response' as const,
-      responseType: 'json' as const,
-      headers: safeHeaders
+  public sendPostRequestWithResponseHeaders<T>(url: string, data: T, headers: HttpHeaders | null): Observable<HttpResponse<T>> {
+
+    if (headers == null) {
+      headers = APIService.DEFAULT_HEADERS;
+    }
+    const httpOptions: {
+      headers: HttpHeaders;
+      observe: 'response';
+      responseType: 'json';
+    } = {
+      headers: headers,
+      observe: 'response',
+      responseType: 'json'
     };
-    return this.httpClient.post<T>(url, data, httpOptions).pipe(retry(1), catchError((error) => this.httpError(error)));
+
+    console.log("send post request url=["+ url + "] / data=[" + data + "]");
+
+    return this.httpClient.post<T>(url, data,httpOptions).pipe(retry(1), catchError(this.httpError))
   }
+    
+
 
   public sendPutRequest<T>(url: string, body: object, headers: HttpHeaders | null): Observable<T> {
     const safeHeaders = headers ?? APIService.DEFAULT_HEADERS;
@@ -98,5 +111,4 @@ export class APIService {
       .patch<T>(url, body, httpOptions)
       .pipe(retry(1), catchError((error) => this.httpError(error)));
   }
-
 }
