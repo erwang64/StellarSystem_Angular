@@ -1,17 +1,19 @@
 import { Component, inject, PLATFORM_ID, signal, WritableSignal } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { isPlatformBrowser } from '@angular/common';
 import { Observable } from 'rxjs';
+import { StellarSystem } from '../../model/stellar-system';
+import { StellarSystemsService } from '../../services/stellar-systems.service';
 
-import { StellarSystem } from '../../../model/stellar-system';
-import { StellarSystemsService } from '../../../services/stellar-systems.service';
+
 
 @Component({
-  selector: 'app-systems-list',
-  imports: [],
-  templateUrl: './systems-list.html',
-  styleUrl: './systems-list.scss'
+  selector: 'app-systems-page',
+  imports: [RouterLink],
+  templateUrl: './systems-page.html',
+  styleUrl: './systems-page.scss',
 })
-export class SystemsListComponent {
+export class SystemsPage {
   readonly allSystems: WritableSignal<Array<StellarSystem>> = signal<Array<StellarSystem>>([]);
   private readonly platformId = inject(PLATFORM_ID);
 
@@ -23,8 +25,7 @@ export class SystemsListComponent {
     const tmpSystems = new Array<StellarSystem>();
     obs.subscribe((data: StellarSystem[]) => {
       data.forEach((tmpSys: StellarSystem) => {
-        // Copy received data in a new Object
-        const curSys: StellarSystem = new StellarSystem(tmpSys.name, tmpSys.posX, tmpSys.posY);
+        const curSys = new StellarSystem(tmpSys.name, tmpSys.posX, tmpSys.posY);
         curSys.id = tmpSys.id;
         curSys.star = tmpSys.star;
         curSys.planets = tmpSys.planets;
@@ -32,5 +33,17 @@ export class SystemsListComponent {
       });
       this.allSystems.set(tmpSystems);
     });
+  }
+
+  onEdit(system: StellarSystem): void {
+    // À implémenter : navigation vers une page d'édition ou ouverture d'un modal
+    console.log('Modifier', system);
+    // Exemple : this.router.navigate(['/edit-system', system.id]);
+  }
+
+  onDelete(system: StellarSystem): void {
+    // À implémenter : demande de confirmation puis suppression
+    console.log('Supprimer', system);
+    // Appel au service : this.service.deleteSystem(system.id).subscribe(...)
   }
 }

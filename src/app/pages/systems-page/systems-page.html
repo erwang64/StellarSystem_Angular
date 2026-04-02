@@ -1,0 +1,51 @@
+<div class="text-center mb-4">
+  <h2>Systèmes stellaires</h2>
+  <p class="text-muted">Gestion des systèmes</p>
+</div>
+
+<div class="d-flex justify-content-between mb-3">
+  <button class="btn btn-outline-secondary" routerLink="/">
+    ← Retour à l’accueil
+  </button>
+  <button class="btn btn-primary" routerLink="/add-system">
+    + Ajouter un système
+  </button>
+</div>
+
+<div class="card shadow-sm">
+  <div class="card-body p-0">
+    <table class="table mb-0">
+      <thead class="table-dark">
+        <tr>
+          <th class="text-center">Nom</th>
+          <th class="text-center">X</th>
+          <th class="text-center">Y</th>
+          <th class="text-center">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (sys of allSystems(); track sys.id) {
+          <tr>
+            <td class="text-center">{{ sys.name }}</td>
+            <td class="text-center">{{ sys.posX }}</td>
+            <td class="text-center">{{ sys.posY }}</td>
+            <td class="text-center text-nowrap">
+              <button class="btn btn-sm btn-outline-primary me-1" (click)="onEdit(sys)" title="Modifier">
+                <i class="bi bi-pencil"></i>
+              </button>
+              <button class="btn btn-sm btn-outline-danger" (click)="onDelete(sys)" title="Supprimer">
+                <i class="bi bi-trash"></i>
+              </button>
+            </td>
+          </tr>
+        } @empty {
+          <tr>
+            <td colspan="4" class="text-center text-muted">
+              la liste est vide.
+            </td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</div>

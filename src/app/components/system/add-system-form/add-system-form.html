@@ -1,1 +1,86 @@
-<p>add-system-form works!</p>
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6 col-lg-5">
+
+      <div class="card shadow-sm">
+        <div class="card-header bg-dark text-white text-center">
+          <h5 class="mb-0">Créer un système stellaire</h5>
+        </div>
+
+        <div class="card-body">
+          <form [formGroup]="form" (ngSubmit)="validateCreationSystem()">
+
+            <!-- Nom -->
+            <div class="mb-3">
+              <label for="name" class="form-label">Nom du système</label>
+              <input
+                id="name"
+                type="text"
+                class="form-control"
+                formControlName="name"
+                placeholder="Ex: Alpha Centauri"
+              />
+              <div class="text-danger mt-1"
+                   *ngIf="form.get('name')?.invalid && form.get('name')?.touched">
+                Le nom est obligatoire.
+              </div>
+            </div>
+
+            <!-- Position X -->
+            <div class="mb-3">
+              <label for="posX" class="form-label">Position X</label>
+              <input
+                id="posX"
+                type="number"
+                class="form-control"
+                formControlName="posX"
+                placeholder="Ex: 123"
+              />
+              <div class="text-danger mt-1"
+                   *ngIf="form.get('posX')?.invalid && form.get('posX')?.touched">
+                La position X est obligatoire.
+              </div>
+            </div>
+
+            <!-- Position Y -->
+            <div class="mb-3">
+              <label for="posY" class="form-label">Position Y</label>
+              <input
+                id="posY"
+                type="number"
+                class="form-control"
+                formControlName="posY"
+                placeholder="Ex: 456"
+              />
+              <div class="text-danger mt-1"
+                   *ngIf="form.get('posY')?.invalid && form.get('posY')?.touched">
+                La position Y est obligatoire.
+              </div>
+            </div>
+
+            <!-- Actions -->
+            <div class="d-flex justify-content-between mt-4">
+              <button
+                type="button"
+                class="btn btn-outline-secondary"
+                (click)="cancelCreationSystem()"
+              >
+                Annuler
+              </button>
+
+              <button
+                type="submit"
+                class="btn btn-primary"
+                [disabled]="form.invalid"
+              >
+                Créer
+              </button>
+            </div>
+
+          </form>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
