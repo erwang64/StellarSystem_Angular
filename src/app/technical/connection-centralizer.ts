@@ -8,12 +8,12 @@ export class ConnectionCentralizer {
     public jwt!: string | null;
     
     private constructor() { }
-    public static getInstance(): ConnectionCentralizer {
-        if (!ConnectionCentralizer.instance == null) {
-            ConnectionCentralizer.instance = new ConnectionCentralizer();
-        }
-        return ConnectionCentralizer.instance;
+public static getInstance(): ConnectionCentralizer {
+    if (!ConnectionCentralizer.instance) {
+        ConnectionCentralizer.instance = new ConnectionCentralizer();
     }
+    return ConnectionCentralizer.instance;
+}
 
     connectionChanged(newConnectionUser: User | null, jwt: string | null) {
         this.user = newConnectionUser;

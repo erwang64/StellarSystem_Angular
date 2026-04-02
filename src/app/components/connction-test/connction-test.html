@@ -1,0 +1,8 @@
+@if (connectedUser!=null) {
+    <button (click)="connectDisconnect()">Déconnexion</button>
+    <p> login: {{ connectedUser.login }}</p>
+    <p> Profile: {{ connectedUser.profile }}</p>
+} @else {
+    <button (click)="connectDisconnect()">Connexion</button>
+    <p>Non connecté</p>
+}

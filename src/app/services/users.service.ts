@@ -10,7 +10,7 @@ import { ConnectionCentralizer } from '../technical/connection-centralizer';
   providedIn: 'root'
 })
 export class UsersService {
-  private readonly loginUrl = `${APIService.ROOT_URL}/auth/login`;
+  private readonly loginUrl = `${APIService.ROOT_URL}/users/login`;
 
   constructor(private apiService: APIService) {}
 
@@ -18,7 +18,7 @@ export class UsersService {
     const usr : User = new User();
     usr.login = login;
     usr.password = password;
-    let url = this.loginUrl + "/login"
+    let url = this.loginUrl
     let obs: Observable<HttpResponse<User>> = this.apiService.sendPostRequestWithResponseHeaders<User>(url, usr, null);
     obs.subscribe((data: HttpResponse<User>) => {
     let heeders: HttpHeaders = data.headers;

@@ -14,7 +14,7 @@ export class StellarSystemsService {
 
   addSystem(sys: StellarSystem): Observable<StellarSystem> {
     const url = this.ROOT_SYS_URL;
-    return this.apiService.sendPostRequest<StellarSystem>(url, sys, null).pipe(
+    return this.apiService.sendPostRequestWithResponseHeaders<StellarSystem>(url, sys, null).pipe(
       map((response) => {
         if (response.body === null) {
           throw new Error('Reponse vide.');
