@@ -1,0 +1,23 @@
+<div class="container-sm border rounded-3 border-primary-subtle bg-primary-subtle" style="width: 25%; height: auto;">
+    <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Connection</h5>
+    </div>
+    <div class="modeal-body">
+        <form [formGroup]="form">
+            <div class="mb-3">
+                <label for="login" class="form-label">Login</label>
+                <input type="text" class="form-control" id="login" formControlName="login">
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" class="form-control" id="password" formControlName="password">
+            </div>
+        </form>
+
+    </div>
+ 
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="cancel()">Cancel</button>
+        <button type="button" class="btn btn-primary" [disabled]="form.invalid" (click)="validate()">Connect</button>
+    </div>
+</div>

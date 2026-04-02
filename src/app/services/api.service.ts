@@ -87,7 +87,16 @@ export class APIService {
 
     return this.httpClient.post<T>(url, data,httpOptions).pipe(retry(1), catchError(this.httpError))
   }
-    
+
+   public sendPostRequest<T>(url: string, data: T, headers: HttpHeaders | null): Observable<HttpResponse<T>> {
+    const safeHeaders = headers ?? APIService.FORM_HEADERS;
+    const httpOptions = {
+      observe: 'response' as const,
+      responseType: 'json' as const,
+      headers: safeHeaders
+     };
+     return this.httpClient.post<T>(url, data, httpOptions).pipe(retry(1), catchError((error) => this.httpError(error)));
+  }
 
 
   public sendPutRequest<T>(url: string, body: object, headers: HttpHeaders | null): Observable<T> {

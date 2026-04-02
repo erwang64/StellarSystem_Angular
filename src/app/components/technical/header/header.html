@@ -1,1 +1,22 @@
-<p>header works!</p>
+<div class="d-flex justify-content-end">
+@if (connectedUser()! == null) {
+
+        <button type="button" ngbTooltip="Se connecter" class="btn btn-success" style="margin: 10px" (click)="connect()" >
+        <i class="bi bi-box-arrow-in-right"></i>
+        </button>
+
+ } @else { 
+
+    <div class="align-content-center">
+        {{connectedUser()!.login}} - {{connectedUser()!.profile}}
+
+    </div>
+
+    <button type="button" ngbTooltip="Se déconnecter" class="btn btn-warning" style="margin: 10px" (click)="disconnect()">
+
+        <i class="bi bi-box-arrow-right"></i>
+
+    </button>
+ }
+
+</div>

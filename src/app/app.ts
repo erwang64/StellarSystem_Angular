@@ -1,12 +1,15 @@
 import { Component } from '@angular/core';
 
-import { SystemsListComponent } from './components/system/systems-list/systems-list';
-import { ConnctionTest } from "./components/connction-test/connction-test";
+
+import { Header } from "./components/technical/header/header";
+import { RouterOutlet } from "@angular/router";
 
 @Component({
   selector: 'app-root',
-  imports: [SystemsListComponent, ConnctionTest],
+  imports: [Header, RouterOutlet],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })
-export class App {}
+export class App {
+  title = 'stellarsystemAngular';
+}

@@ -3,6 +3,8 @@ import { map, Observable } from 'rxjs';
 
 import { StellarSystem } from '../model/stellar-system';
 import { APIService } from './api.service';
+import { HttpHeaders } from '@angular/common/http';
+import { ConnectionCentralizer } from '../technical/connection-centralizer';
 
 @Injectable({
   providedIn: 'root'
@@ -13,19 +15,21 @@ export class StellarSystemsService {
   constructor(private apiService: APIService) {}
 
   addSystem(sys: StellarSystem): Observable<StellarSystem> {
-    const url = this.ROOT_SYS_URL;
-    return this.apiService.sendPostRequestWithResponseHeaders<StellarSystem>(url, sys, null).pipe(
-      map((response) => {
-        if (response.body === null) {
-          throw new Error('Reponse vide.');
-        }
-        return response.body;
-      })
-    );
+    let header: HttpHeaders | null = null;
+    let jwt: string | null = ConnectionCentralizer.getInstance().jwt;
+    if (jwt != null) {
+      header = new HttpHeaders({
+        Authorization: jwt,
+      });
+
+      
+    }
+    return this.apiService.sendPostRequestWithResponseHeaders<StellarSystem>(this.ROOT_SYS_URL, sys, header).pipe(map((response) => response.body as StellarSystem));
+
   }
 
   getAllSystems(): Observable<Array<StellarSystem>> {
-    const url = this.ROOT_SYS_URL + '/all';
+    let url = this.ROOT_SYS_URL + '/all';
     return this.apiService.sendGetRequest<Array<StellarSystem>>(url, null);
   }
 
