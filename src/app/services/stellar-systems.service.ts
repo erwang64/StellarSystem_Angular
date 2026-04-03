@@ -5,6 +5,7 @@ import { StellarSystem } from '../model/stellar-system';
 import { APIService } from './api.service';
 import { HttpHeaders } from '@angular/common/http';
 import { ConnectionCentralizer } from '../technical/connection-centralizer';
+import { signal } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,14 @@ import { ConnectionCentralizer } from '../technical/connection-centralizer';
 export class StellarSystemsService {
   readonly ROOT_SYS_URL: string = APIService.ROOT_URL + '/StellarSystem';
 
+// ************* SIGNAL *************
+  private allSystems_signal = signal<StellarSystem[]>([]);
+  allSystems = this.allSystems_signal.asReadonly();
+  
+
   constructor(private apiService: APIService) {}
+
+  
 
   addSystem(sys: StellarSystem): Observable<StellarSystem> {
     let header: HttpHeaders | null = null;
@@ -30,7 +38,9 @@ export class StellarSystemsService {
 
   getAllSystems(): Observable<Array<StellarSystem>> {
     let url = this.ROOT_SYS_URL + '/all';
-    return this.apiService.sendGetRequest<Array<StellarSystem>>(url, null);
+    return this.apiService.sendGetRequest<Array<StellarSystem>>(url, null).pipe(map(data => { this.allSystems_signal.set(data);
+      return data
+    }))
   }
 
   getSystemById(id: number): Observable<StellarSystem> {
@@ -50,6 +60,9 @@ export class StellarSystemsService {
 
   deleteSystem(id: number): Observable<StellarSystem> {
     const url = this.ROOT_SYS_URL + '/' + id;
-    return this.apiService.sendDeleteRequest<StellarSystem>(url, null);
+    return this.apiService.sendDeleteRequest<StellarSystem>(url, null).pipe(map(data => {
+      this.allSystems_signal.update(curr => curr.filter(sys => sys.id !== id));
+      return data;
+    }));
   }
 }

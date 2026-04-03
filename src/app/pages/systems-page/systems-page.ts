@@ -15,41 +15,22 @@ import { ConnectionCentralizer } from '../../technical/connection-centralizer';
   styleUrl: './systems-page.scss',
 })
 export class SystemsPage {
-  readonly allSystems: WritableSignal<Array<StellarSystem>> = signal<Array<StellarSystem>>([]);
-  private readonly platformId = inject(PLATFORM_ID);
-
+  allSystems = inject(StellarSystemsService).allSystems;  // ← Utiliser directement du service
   connection = ConnectionCentralizer.getInstance();
 
   constructor(private service: StellarSystemsService) {
-    if (!isPlatformBrowser(this.platformId)) {
-      return;
-    }
-    const obs: Observable<Array<StellarSystem>> = this.service.getAllSystems();
-    const tmpSystems = new Array<StellarSystem>();
-    obs.subscribe((data: StellarSystem[]) => {
-      data.forEach((tmpSys: StellarSystem) => {
-        const curSys = new StellarSystem(tmpSys.name, tmpSys.posX, tmpSys.posY);
-        curSys.id = tmpSys.id;
-        curSys.star = tmpSys.star;
-        curSys.planets = tmpSys.planets;
-        tmpSystems.push(curSys);
+    if (!isPlatformBrowser(inject(PLATFORM_ID))) return;
+    
+    // Plus simple : juste s'abonner
+    this.service.getAllSystems().subscribe();
+  }
+
+  onDelete(sys: StellarSystem): void {
+    if (confirm(`Êtes-vous sûr de vouloir supprimer le système stellaire "${sys.name}" ?`)) {
+      this.service.deleteSystem(sys.id).subscribe(() => {
+        alert(`Système stellaire "${sys.name}" supprimé !`);
       });
-      this.allSystems.set(tmpSystems);
-    });
+    }
   }
-
-  onEdit(system: StellarSystem): void {
-    // À implémenter : navigation vers une page d'édition ou ouverture d'un modal
-    console.log('Modifier', system);
-    // Exemple : this.router.navigate(['/edit-system', system.id]);
-  }
-
-  onDelete(system: StellarSystem): void {
-    // À implémenter : demande de confirmation puis suppression
-    console.log('Supprimer', system);
-    // Appel au service : this.service.deleteSystem(system.id).subscribe(...)
-  }
-
-  
 
 }

@@ -34,13 +34,13 @@
             <td class="text-center text-nowrap">
               @if (connection.isLooggedIn()) {
 
-                              <button class="btn btn-sm btn-outline-primary me-1" (click)="onEdit(sys)" title="Modifier">
+               <button class="btn btn-sm btn-outline-primary me-1" title="Modifier">
                 <i class="bi bi-pencil"></i>
-              </button>
-              <button class="btn btn-sm btn-outline-danger" (click)="onDelete(sys)" title="Supprimer">
+                </button>
+                <button class="btn btn-sm btn-outline-danger" (click)="onDelete(sys)" title="Supprimer">
                 <i class="bi bi-trash"></i>
               </button>
-              
+
               }
             </td>
           </tr>
