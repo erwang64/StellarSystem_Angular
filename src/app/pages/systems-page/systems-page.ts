@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { StellarSystem } from '../../model/stellar-system';
 import { StellarSystemsService } from '../../services/stellar-systems.service';
 import { ConnectionCentralizer } from '../../technical/connection-centralizer';
+import { Router } from '@angular/router';
 
 
 
@@ -18,7 +19,7 @@ export class SystemsPage {
   allSystems = inject(StellarSystemsService).allSystems;  // ← Utiliser directement du service
   connection = ConnectionCentralizer.getInstance();
 
-  constructor(private service: StellarSystemsService) {
+  constructor(private service: StellarSystemsService, private router: Router) {
     if (!isPlatformBrowser(inject(PLATFORM_ID))) return;
     
     // Plus simple : juste s'abonner
@@ -31,6 +32,11 @@ export class SystemsPage {
         alert(`Système stellaire "${sys.name}" supprimé !`);
       });
     }
+  }
+  
+  onEdit(sys: StellarSystem): void {
+    this.service.setSelectedSystem(sys);
+    this.router.navigateByUrl("/edit-system");
   }
 
 }

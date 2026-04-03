@@ -1,0 +1,94 @@
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6 col-lg-5">
+
+      <div class="card shadow-sm">
+        <div class="card-header bg-dark text-white text-center">
+          <h5 class="mb-0">Modifier un système stellaire</h5>
+        </div>
+
+        <div class="card-body">
+          <form [formGroup]="form" (ngSubmit)="validateUpdateSystem()">
+
+            <!-- Nom -->
+            <div class="mb-3">
+              <label for="name" class="form-label">Nom du système</label>
+              <input
+                id="name"
+                type="text"
+                class="form-control"
+                formControlName="name"
+                placeholder="Ex: Alpha Centauri"
+              />
+
+              @if (form.get('name')?.invalid && form.get('name')?.touched) {
+                <div class="text-danger mt-1">
+                  Le nom est obligatoire.
+                </div>
+              }
+            </div>
+
+            <!-- Position X -->
+            <div class="mb-3">
+              <label for="posX" class="form-label">Position X</label>
+              <input
+                id="posX"
+                type="number"
+                class="form-control"
+                formControlName="posX"
+                placeholder="Ex: 123"
+              />
+
+              @if (form.get('posX')?.invalid && form.get('posX')?.touched) {
+                <div class="text-danger mt-1">
+                  La position X est obligatoire.
+                </div>
+              }
+            </div>
+
+            <!-- Position Y -->
+            <div class="mb-3">
+              <label for="posY" class="form-label">Position Y</label>
+              <input
+                id="posY"
+                type="number"
+                class="form-control"
+                formControlName="posY"
+                placeholder="Ex: 456"
+              />
+
+              @if (form.get('posY')?.invalid && form.get('posY')?.touched) {
+                <div class="text-danger mt-1">
+                  La position Y est obligatoire.
+                </div>
+              }
+            </div>
+
+            <!-- Actions -->
+            <div class="d-flex justify-content-between mt-4">
+              <button
+                type="button"
+                class="btn btn-outline-secondary"
+                routerLink="/systems"
+            
+              >
+                Annuler
+              </button>
+
+              <button
+                type="submit"
+                class="btn btn-warning"
+                (click)="validateUpdateSystem"
+                [disabled]="form.invalid"
+              >
+                Mettre à jour
+              </button>
+            </div>
+
+          </form>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

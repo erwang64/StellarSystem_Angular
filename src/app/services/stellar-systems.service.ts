@@ -16,7 +16,10 @@ export class StellarSystemsService {
 // ************* SIGNAL *************
   private allSystems_signal = signal<StellarSystem[]>([]);
   allSystems = this.allSystems_signal.asReadonly();
-  
+
+  // ************* SIGNAL system selection *************
+  private systemSelectione_signal = signal<StellarSystem | null>(null);
+  selectedSystem = this.systemSelectione_signal.asReadonly();
 
   constructor(private apiService: APIService) {}
 
@@ -43,18 +46,22 @@ export class StellarSystemsService {
     }))
   }
 
+  setSelectedSystem(system: StellarSystem): void {
+    this.systemSelectione_signal.set(system);
+  }
+
   getSystemById(id: number): Observable<StellarSystem> {
     const url = this.ROOT_SYS_URL + '/' + id;
     return this.apiService.sendGetRequest<StellarSystem>(url, null);
   }
 
   updateSystem(sys: StellarSystem): Observable<StellarSystem> {
-    const url = this.ROOT_SYS_URL;
+    const url = this.ROOT_SYS_URL + '/' + sys.id;
     return this.apiService.sendPutRequest<StellarSystem>(url, sys, null);
   }
 
   patchSystem(sys: StellarSystem): Observable<StellarSystem> {
-    const url = this.ROOT_SYS_URL;
+    const url = this.ROOT_SYS_URL + '/' + sys.id;
     return this.apiService.sendPatchRequest<StellarSystem>(url, sys, null);
   }
 
