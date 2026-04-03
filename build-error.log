@@ -1,0 +1,269 @@
+
+> stellarsystem-angular@0.0.0 build
+> ng build
+
+[33mÔØ»[39m Building...
+[32mÔ£ö[39m Building...
+[35mBrowser bundles[39m      
+[1mInitial chunk files[22m  [2m | [22m[1mNames[22m           [2m | [22m [1mRaw size[22m[2m | [22m[1mEstimated transfer size[22m
+[32mmain-HOH3CS3Y.js[39m     [2m | [22m[2mmain[22m            [2m | [22m[36m357.15 kB[39m[2m | [22m               [36m89.48 kB[39m
+[32mstyles-2QIUYGXO.css[39m  [2m | [22m[2mstyles[22m          [2m | [22m[36m315.25 kB[39m[2m | [22m               [36m34.08 kB[39m
+[32mpolyfills-PZSJNBYU.js[39m[2m | [22m[2mpolyfills[22m       [2m | [22m[36m494 bytes[39m[2m | [22m              [36m494 bytes[39m
+
+[1m [22m                    [2m | [22m[1mInitial total[22m   [2m | [22m[1m[93m672.89 kB[39m[22m[2m | [22m              [1m124.05 kB[22m
+
+
+[35mServer bundles[39m       
+[1mInitial chunk files[22m  [2m | [22m[1mNames[22m           [2m | [22m [1mRaw size[22m
+[32mserver.mjs[39m           [2m | [22m[2mserver[22m          [2m | [22m[36m811.56 kB[39m[2m | [22m                       
+[32mmain.server.mjs[39m      [2m | [22m[2mmain.server[22m     [2m | [22m[36m793.46 kB[39m[2m | [22m                       
+[32mpolyfills.server.mjs[39m [2m | [22m[2mpolyfills.server[22m[2m | [22m[36m234.24 kB[39m[2m | [22m                       
+[32mchunk-BBJ2OP3G.mjs[39m   [2m | [22m[2m-[22m               [2m | [22m  [36m1.34 kB[39m[2m | [22m                       
+[32mchunk-T55IDOPT.mjs[39m   [2m | [22m[2m-[22m               [2m | [22m[36m976 bytes[39m[2m | [22m                       
+
+[1mLazy chunk files[22m     [2m | [22m[1mNames[22m           [2m | [22m [1mRaw size[22m
+[32mchunk-BP7AI3FB.mjs[39m   [2m | [22m[2mxhr2[22m            [2m | [22m [36m12.17 kB[39m[2m | [22m                       
+[32mchunk-N3SI5I4Q.mjs[39m   [2m | [22m[2mxhr2[22m            [2m | [22m [36m12.07 kB[39m[2m | [22m                       
+
+[35mPrerendered 5 static routes.[39m
+Application bundle generation failed. [7.010 seconds] - 2026-04-03T13:56:53.726Z
+
+Ôû▓ [WARNING] 5 repetitive deprecation warnings omitted.
+Run in verbose mode to see all warnings. [plugin angular-sass]
+
+  null
+
+
+Ôû▓ [WARNING] NG8113: RouterLink is not used within the template of App [plugin angular-compiler]
+
+    src/app/app.ts:7:35:
+      7 Ôöé   imports: [Header, RouterOutlet,  RouterLink],
+        ÔòÁ                                    ~~~~~~~~~~
+
+
+Ôû▓ [WARNING] NG8103: NG8103: The `*ngIf` directive was used in the template, but neither the `NgIf` directive nor the `CommonModule` was imported. Use Angular's built-in control flow @if or make sure that either the `NgIf` directive or the `CommonModule` is included in the `@Component.imports` array of this component. Find more at https://v21.angular.dev/extended-diagnostics/NG8103 [plugin angular-compiler]
+
+    src/app/components/system/add-system-form/add-system-form.html:24:20:
+      24 Ôöé                    *ngIf="form.get('name')?.invalid && form.get('n...
+         ÔòÁ                     ~~~~
+
+  Warning occurs in the template of component AddSystemForm.
+
+    src/app/components/system/add-system-form/add-system-form.ts:9:15:
+      9 Ôöé   templateUrl: './add-system-form.html',
+        ÔòÁ                ~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Ôû▓ [WARNING] NG8103: NG8103: The `*ngIf` directive was used in the template, but neither the `NgIf` directive nor the `CommonModule` was imported. Use Angular's built-in control flow @if or make sure that either the `NgIf` directive or the `CommonModule` is included in the `@Component.imports` array of this component. Find more at https://v21.angular.dev/extended-diagnostics/NG8103 [plugin angular-compiler]
+
+    src/app/components/system/add-system-form/add-system-form.html:40:20:
+      40 Ôöé                    *ngIf="form.get('posX')?.invalid && form.get('p...
+         ÔòÁ                     ~~~~
+
+  Warning occurs in the template of component AddSystemForm.
+
+    src/app/components/system/add-system-form/add-system-form.ts:9:15:
+      9 Ôöé   templateUrl: './add-system-form.html',
+        ÔòÁ                ~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Ôû▓ [WARNING] NG8103: NG8103: The `*ngIf` directive was used in the template, but neither the `NgIf` directive nor the `CommonModule` was imported. Use Angular's built-in control flow @if or make sure that either the `NgIf` directive or the `CommonModule` is included in the `@Component.imports` array of this component. Find more at https://v21.angular.dev/extended-diagnostics/NG8103 [plugin angular-compiler]
+
+    src/app/components/system/add-system-form/add-system-form.html:56:20:
+      56 Ôöé                    *ngIf="form.get('posY')?.invalid && form.get('p...
+         ÔòÁ                     ~~~~
+
+  Warning occurs in the template of component AddSystemForm.
+
+    src/app/components/system/add-system-form/add-system-form.ts:9:15:
+      9 Ôöé   templateUrl: './add-system-form.html',
+        ÔòÁ                ~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Ôû▓ [WARNING] NG8111: NG8111: Function in event binding should be invoked: validateUpdateSystem(). Find more at https://v21.angular.dev/extended-diagnostics/NG8111 [plugin angular-compiler]
+
+    src/app/components/system/edit-system-form/edit-system-form.html:81:16:
+      81 Ôöé                 (click)="validateUpdateSystem"
+         ÔòÁ                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+  Warning occurs in the template of component EditSystemForm.
+
+    src/app/components/system/edit-system-form/edit-system-form.ts:11:15:
+      11 Ôöé   templateUrl: './edit-system-form.html',
+         ÔòÁ                ~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Ôû▓ [WARNING] NG8113: NgIf is not used within the template of SystemsPage [plugin angular-compiler]
+
+    src/app/pages/systems-page/systems-page.ts:14:24:
+      14 Ôöé   imports: [RouterLink, NgIf],
+         ÔòÁ                         ~~~~
+
+
+Ôû▓ [WARNING] Deprecation [plugin angular-sass]
+
+    src/app/components/system/default/default.scss:11:13:
+      11 Ôöé   $value: '#{random(2000)}px #{random(2000)}px #FFF';
+         ÔòÁ              ^
+
+
+  Global built-in functions are deprecated and will be removed in Dart Sass 3.0.0.
+  Use math.random instead.
+  
+  More info and automated migrator: https://sass-lang.com/d/import
+
+
+Ôû▓ [WARNING] Deprecation [plugin angular-sass]
+
+    src/app/components/system/default/default.scss:11:31:
+      11 Ôöé   $value: '#{random(2000)}px #{random(2000)}px #FFF';
+         ÔòÁ                                ^
+
+
+  Global built-in functions are deprecated and will be removed in Dart Sass 3.0.0.
+  Use math.random instead.
+  
+  More info and automated migrator: https://sass-lang.com/d/import
+
+
+Ôû▓ [WARNING] Deprecation [plugin angular-sass]
+
+    src/app/components/system/default/default.scss:13:27:
+      13 Ôöé     $value: '#{$value} , #{random(2000)}px #{random(2000)}px #FFF';
+         ÔòÁ                            ^
+
+
+  Global built-in functions are deprecated and will be removed in Dart Sass 3.0.0.
+  Use math.random instead.
+  
+  More info and automated migrator: https://sass-lang.com/d/import
+
+
+Ôû▓ [WARNING] Deprecation [plugin angular-sass]
+
+    src/app/components/system/default/default.scss:13:45:
+      13 Ôöé     $value: '#{$value} , #{random(2000)}px #{random(2000)}px #FFF';
+         ÔòÁ                                              ^
+
+
+  Global built-in functions are deprecated and will be removed in Dart Sass 3.0.0.
+  Use math.random instead.
+  
+  More info and automated migrator: https://sass-lang.com/d/import
+
+
+Ôû▓ [WARNING] Deprecation [plugin angular-sass]
+
+    src/app/components/system/default/default.scss:15:10:
+      15 Ôöé   @return unquote($value);
+         ÔòÁ           ^
+
+
+  Global built-in functions are deprecated and will be removed in Dart Sass 3.0.0.
+  Use string.unquote instead.
+  
+  More info and automated migrator: https://sass-lang.com/d/import
+
+
+Ôû▓ [WARNING] Deprecation [plugin angular-sass]
+
+    src/app/components/system/default/default.scss:78:49:
+      78 Ôöé ...ound: linear-gradient(135deg, $panel-bg, darken($panel-bg, 10%));
+         ÔòÁ                                             ^
+
+
+  darken() is deprecated. Suggestions:
+  
+  color.scale($color, $lightness: -65.3846153846%)
+  color.adjust($color, $lightness: -10%)
+  
+  More info: https://sass-lang.com/d/color-functions
+
+
+Ôû▓ [WARNING] Deprecation [plugin angular-sass]
+
+    src/app/components/system/default/default.scss:133:41:
+      133 Ôöé ...nd: linear-gradient(to bottom, lighten($orange-btn, 10%), dark...
+          ÔòÁ                                   ^
+
+
+  lighten() is deprecated. Suggestions:
+  
+  color.scale($color, $lightness: 21.3389121339%)
+  color.adjust($color, $lightness: 10%)
+  
+  More info: https://sass-lang.com/d/color-functions
+
+
+Ôû▓ [WARNING] Deprecation [plugin angular-sass]
+
+    src/app/components/system/default/default.scss:133:68:
+      133 Ôöé ...(to bottom, lighten($orange-btn, 10%), darken($orange-btn, 5%));
+          ÔòÁ                                           ^
+
+
+  darken() is deprecated. Suggestions:
+  
+  color.scale($color, $lightness: -9.4095940959%)
+  color.adjust($color, $lightness: -5%)
+  
+  More info: https://sass-lang.com/d/color-functions
+
+
+Ôû▓ [WARNING] Deprecation [plugin angular-sass]
+
+    src/app/components/system/default/default.scss:135:20:
+      135 Ôöé   border: 1px solid lighten($orange-btn, 20%);
+          ÔòÁ                     ^
+
+
+  lighten() is deprecated. Suggestions:
+  
+  color.scale($color, $lightness: 42.6778242678%)
+  color.adjust($color, $lightness: 20%)
+  
+  More info: https://sass-lang.com/d/color-functions
+
+
+Ôû▓ [WARNING] Deprecation [plugin angular-sass]
+
+    src/app/components/system/default/default.scss:151:43:
+      151 Ôöé ...nd: linear-gradient(to bottom, lighten($orange-btn, 15%), $ora...
+          ÔòÁ                                   ^
+
+
+  lighten() is deprecated. Suggestions:
+  
+  color.scale($color, $lightness: 32.0083682008%)
+  color.adjust($color, $lightness: 15%)
+  
+  More info: https://sass-lang.com/d/color-functions
+
+
+Ôû▓ [WARNING] Deprecation [plugin angular-sass]
+
+    src/styles.scss:17:8:
+      17 Ôöé @import 'bootstrap/scss/bootstrap';
+         ÔòÁ         ^
+
+
+  Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+  
+  More info and automated migrator: https://sass-lang.com/d/import
+
+  The plugin "angular-sass" was triggered by this import
+
+    angular:styles/global:styles:1:8:
+      1 Ôöé @import 'src/styles.scss';
+        ÔòÁ         ~~~~~~~~~~~~~~~~~
+
+
+Ôû▓ [WARNING] bundle initial exceeded maximum budget. Budget 500.00 kB was not met by 172.89 kB with a total of 672.89 kB.
+
+
+Ôû▓ [WARNING] src/app/components/system/default/default.scss exceeded maximum budget. Budget 4.00 kB was not met by 34.30 kB with a total of 38.30 kB.
+
+
+X [ERROR] src/app/components/system/default/default.scss exceeded maximum budget. Budget 8.00 kB was not met by 30.30 kB with a total of 38.30 kB.
+
+

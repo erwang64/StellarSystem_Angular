@@ -1,22 +1,24 @@
-<div class="d-flex justify-content-end">
-@if (connectedUser()! == null) {
+<nav class="navbar glass-panel px-4 py-2 mb-4 mt-3 mx-3 d-flex justify-content-between align-items-center">
+  <div class="d-flex align-items-center">
+    <h3 class="m-0 text-primary" style="font-weight: 800; letter-spacing: 1px;">
+      <i class="bi bi-stars"></i> StellarSystem
+    </h3>
+  </div>
 
-        <button type="button" ngbTooltip="Se connecter" class="btn btn-success" style="margin: 10px" (click)="connect()" >
-        <i class="bi bi-box-arrow-in-right"></i>
-        </button>
+  <div class="d-flex align-items-center">
+    @if (connectedUser()! == null) {
+      <button type="button" ngbTooltip="Se connecter" class="btn btn-primary" (click)="connect()">
+        <i class="bi bi-box-arrow-in-right me-1"></i> Connexion
+      </button>
+    } @else { 
+      <div class="d-flex align-items-center me-3" style="font-weight: 500;">
+        <i class="bi bi-person-circle fs-4 me-2 text-primary"></i>
+        <span>{{connectedUser()!.login}} <span class="badge bg-secondary ms-1">{{connectedUser()!.profile}}</span></span>
+      </div>
 
- } @else { 
-
-    <div class="align-content-center">
-        {{connectedUser()!.login}} - {{connectedUser()!.profile}}
-
-    </div>
-
-    <button type="button" ngbTooltip="Se déconnecter" class="btn btn-warning" style="margin: 10px" (click)="disconnect()">
-
+      <button type="button" ngbTooltip="Se déconnecter" class="btn btn-outline-danger" (click)="disconnect()">
         <i class="bi bi-box-arrow-right"></i>
-
-    </button>
- }
-
-</div>
+      </button>
+    }
+  </div>
+</nav>

@@ -5,32 +5,39 @@
 table {
   width: 100%;
   border-collapse: collapse;
-  background: #fff;
   border-radius: 12px;
   overflow: hidden;
+  color: #e2e8f0;
 }
 
 thead th {
   padding: 16px 20px;
   font-weight: 600;
   font-size: 0.9rem;
-  text-align: left;
-  background: #1f2937;
-  color: white;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.05);
+  color: #00d4ff;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 tbody tr td {
   padding: 18px 20px;
   font-size: 0.95rem;
-  color: #374151;
-  border-bottom: 1px solid #e5e7eb;
+  color: #e2e8f0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  vertical-align: middle;
+}
+
+tbody tr {
+  transition: all 0.2s ease;
 }
 
 tbody tr:hover {
-  background: #f3f4f6;
+  background: rgba(255, 255, 255, 0.03);
+  box-shadow: inset 2px 0 0px #00d4ff;
 }
 
 td:not(:last-child),
 th:not(:last-child) {
-  border-right: 1px solid #e5e7eb;
+  border-right: 1px solid rgba(255, 255, 255, 0.05);
 }

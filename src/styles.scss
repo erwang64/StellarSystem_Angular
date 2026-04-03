@@ -1,7 +1,111 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;800&display=swap');
+
+// Theming Variables
+$body-bg: #090b14;
+$body-color: #e2e8f0;
+$primary: #00d4ff;
+$secondary: #7b4dff;
+$success: #10b981;
+$danger: #ef4444;
+$warning: #f59e0b;
+
+$font-family-sans-serif: 'Outfit', sans-serif;
 
 /* Importing Bootstrap SCSS file. */
 @import 'bootstrap/scss/bootstrap';
 
+/* Importing Bootstrap Icons */
 @import "bootstrap-icons/font/bootstrap-icons.css";
 
+// Global Helpers
+body {
+  background-color: $body-bg;
+  background-image: radial-gradient(circle at 15% 15%, #0e1e38 0%, transparent 40%),
+                    radial-gradient(circle at 85% 85%, #180b2c 0%, transparent 40%);
+  background-attachment: fixed;
+  color: $body-color;
+  min-height: 100vh;
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+}
+
+.glass-panel {
+  background: rgba(16, 23, 42, 0.6) !important;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+  border-radius: 1rem;
+}
+
+// Highly visible forms in Dark Mode
+.form-control {
+  background-color: rgba(255, 255, 255, 0.9) !important;
+  border: 2px solid rgba(255, 255, 255, 0.5) !important;
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  color: #0f172a !important;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  
+  &::placeholder {
+    color: #64748b !important;
+    opacity: 1 !important;
+  }
+  
+  &:focus {
+    border-color: #00d4ff !important;
+    box-shadow: 0 0 10px rgba(0, 212, 255, 0.5) !important;
+    background-color: #ffffff !important;
+  }
+}
+
+.form-label {
+  font-weight: 600;
+  color: #e2e8f0;
+  margin-bottom: 0.5rem;
+}
+
+// Button effects
+.btn {
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  font-weight: 600;
+  padding: 0.6rem 1.25rem;
+  
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 15px -3px rgba(0, 0, 0, 0.3);
+  }
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #00d4ff 0%, #0077ff 100%);
+  border: none;
+  color: white;
+  &:hover {
+    background: linear-gradient(135deg, #22e0ff 0%, #0099ff 100%);
+    box-shadow: 0 8px 15px rgba(0, 212, 255, 0.3);
+    color: white;
+  }
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+// Scrollbars
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #090b14;
+}
+::-webkit-scrollbar-thumb {
+  background: #334155;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #475569;
+}

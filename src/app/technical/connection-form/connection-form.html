@@ -1,23 +1,40 @@
-<div class="container-sm border rounded-3 border-primary-subtle bg-primary-subtle" style="width: 25%; height: auto;">
-    <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Connection</h5>
+<div class="login-container">
+  <div class="glass-panel login-card">
+    <div class="login-avatar">
+      <i class="bi bi-rocket-takeoff"></i>
     </div>
-    <div class="modeal-body">
-        <form [formGroup]="form">
-            <div class="mb-3">
-                <label for="login" class="form-label">Login</label>
-                <input type="text" class="form-control" id="login" formControlName="login">
-            </div>
-            <div class="mb-3">
-                <label for="password" class="form-label">Password</label>
-                <input type="password" class="form-control" id="password" formControlName="password">
-            </div>
-        </form>
+    
+    <h2 class="title">Bienvenue</h2>
+    <p class="subtitle">Connectez-vous au portail StellarSystem</p>
 
-    </div>
- 
-    <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" (click)="cancel()">Cancel</button>
-        <button type="button" class="btn btn-primary" [disabled]="form.invalid" (click)="validate()">Connect</button>
-    </div>
+    <form [formGroup]="form">
+      <div class="form-group">
+        <label for="login">Identifiant pilote</label>
+        <div class="input-group">
+          <span class="input-group-text bg-white text-primary border-end-0" style="border-radius: 8px 0 0 8px;">
+            <i class="bi bi-person-fill"></i>
+          </span>
+          <input type="text" class="form-control border-start-0" id="login" formControlName="login" placeholder="Entrez votre login" style="border-radius: 0 8px 8px 0;">
+        </div>
+      </div>
+
+      <div class="form-group mt-3">
+        <label for="password">Code de sécurité</label>
+        <div class="input-group">
+          <span class="input-group-text bg-white text-primary border-end-0" style="border-radius: 8px 0 0 8px;">
+            <i class="bi bi-lock-fill"></i>
+          </span>
+          <input type="password" class="form-control border-start-0" id="password" formControlName="password" placeholder="Entrez votre mot de passe" style="border-radius: 0 8px 8px 0;">
+        </div>
+      </div>
+
+      <button type="button" class="btn btn-primary btn-connect shadow-lg" [disabled]="form.invalid" (click)="validate()">
+        <i class="bi bi-shield-lock me-2"></i> CONNEXION
+      </button>
+
+      <button type="button" class="btn btn-cancel" (click)="cancel()">
+        Retour
+      </button>
+    </form>
+  </div>
 </div>
