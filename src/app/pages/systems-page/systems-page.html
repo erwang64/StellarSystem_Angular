@@ -7,9 +7,11 @@
   <button class="btn btn-outline-secondary" routerLink="/">
     ← Retour à l’accueil
   </button>
-  <button class="btn btn-primary" routerLink="/add-system">
-    + Ajouter un système
-  </button>
+  @if (connection.isLooggedIn()) {
+    <button class="btn btn-primary" routerLink="/add-system">
+      + Ajouter un système
+    </button>
+  }
 </div>
 
 <div class="card shadow-sm">
@@ -30,12 +32,16 @@
             <td class="text-center">{{ sys.posX }}</td>
             <td class="text-center">{{ sys.posY }}</td>
             <td class="text-center text-nowrap">
-              <button class="btn btn-sm btn-outline-primary me-1" (click)="onEdit(sys)" title="Modifier">
+              @if (connection.isLooggedIn()) {
+
+                              <button class="btn btn-sm btn-outline-primary me-1" (click)="onEdit(sys)" title="Modifier">
                 <i class="bi bi-pencil"></i>
               </button>
               <button class="btn btn-sm btn-outline-danger" (click)="onDelete(sys)" title="Supprimer">
                 <i class="bi bi-trash"></i>
               </button>
+              
+              }
             </td>
           </tr>
         } @empty {

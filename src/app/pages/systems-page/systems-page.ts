@@ -1,21 +1,24 @@
 import { Component, inject, PLATFORM_ID, signal, WritableSignal } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { isPlatformBrowser } from '@angular/common';
+import { isPlatformBrowser, NgIf } from '@angular/common';
 import { Observable } from 'rxjs';
 import { StellarSystem } from '../../model/stellar-system';
 import { StellarSystemsService } from '../../services/stellar-systems.service';
+import { ConnectionCentralizer } from '../../technical/connection-centralizer';
 
 
 
 @Component({
   selector: 'app-systems-page',
-  imports: [RouterLink],
+  imports: [RouterLink, NgIf],
   templateUrl: './systems-page.html',
   styleUrl: './systems-page.scss',
 })
 export class SystemsPage {
   readonly allSystems: WritableSignal<Array<StellarSystem>> = signal<Array<StellarSystem>>([]);
   private readonly platformId = inject(PLATFORM_ID);
+
+  connection = ConnectionCentralizer.getInstance();
 
   constructor(private service: StellarSystemsService) {
     if (!isPlatformBrowser(this.platformId)) {
@@ -46,4 +49,7 @@ export class SystemsPage {
     console.log('Supprimer', system);
     // Appel au service : this.service.deleteSystem(system.id).subscribe(...)
   }
+
+  
+
 }

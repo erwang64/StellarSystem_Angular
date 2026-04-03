@@ -30,4 +30,8 @@ public static getInstance(): ConnectionCentralizer {
     removeListener(listener : IConnexionListener) {
         this.listeners.filter((currentListener) => listener.getName() !== currentListener.getName());
     }
-}
+
+    isLooggedIn(): boolean {
+        return this.user != null && this.jwt != null;
+    }
+}  
